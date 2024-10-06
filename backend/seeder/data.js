@@ -196,7 +196,7 @@ export default [
         reviews: [],
     },
     {
-        name: "LENOVO IdeaPad 1 15IGL7 82V700CURK",
+        name: "LENOVO IdeaPad Laptop 1 15IGL7 82V700CURK",
         price: 459,
         description:
             "Processor (CPU) - Intel Celeron N4020, Display indicators - 15.6 FHD(1920x1080) IPS, Video card (GFX) - Intel UHD Graphics 600. Memory capacity RAM - 8GB and SSD - 256GB G4 LENOVO IdeaPad 1 laptop will be your closest assistant in education and also in work. You will be able to perform any task with ease. Avail the DISCOUNTS now and get the best laptop in your budget.",
