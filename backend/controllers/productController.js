@@ -5,12 +5,15 @@ import ErrorHandler from '../utils/ErrorHandler.js';
 
 // Get All Products => api/v1/products
 export const getProducts = catchAsyncErrors(async (req, res) => {
-
-    const apiFilters = new APIFilters(Product, req.query).search()
+    const resPerPage = 4;
+    const apiFilters = new APIFilters(Product, req.query).search().filters();
     let products = await apiFilters.query;
     let filteredProductsCount = products.length;
+    apiFilters.pagination(resPerPage)
+    products = await apiFilters.query.clone()
 
     res.status(200).json({
+        resPerPage,
         filteredProductsCount,
         products
     })
@@ -47,6 +50,18 @@ export const updateProduct = catchAsyncErrors(async (req, res, next) => {
     }
 
     product = await Product.findByIdAndUpdate(req?.params?.id, req.body, { new: true })
+
+    // Connect MongoDB at default port 27017.
+    mongoose.connect('mongodb://localhost:27017/DB Name', {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+    }, (err) => {
+        if (!err) {
+            console.log('MongoDB Connection Succeeded.')
+        } else {
+            console.log('Error in DB connection: ' + err)
+        }
+    });
 
     res.status(200).json({
         product
