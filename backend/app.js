@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
+import cookieParser from 'cookie-parser';
 import { connectDatabase } from "./config/dbConnect.js";
 import errorMiddleware from './middlewares/errors.js'
 
@@ -8,7 +9,8 @@ dotenv.config({ path: "backend/config/config.env" })
 
 // Connect to database
 connectDatabase();
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser());
 
 // Import all routes
 import productRoutes from './routes/products.js'
