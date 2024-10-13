@@ -2,6 +2,7 @@ import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
 import Product from '../models/product.js'
 import APIFilters from '../utils/apiFilters.js';
 import ErrorHandler from '../utils/ErrorHandler.js';
+import mongoose from 'mongoose';
 
 // Get All Products => api/v1/products
 export const getProducts = catchAsyncErrors(async (req, res) => {
@@ -24,10 +25,13 @@ export const getProducts = catchAsyncErrors(async (req, res) => {
 
 // Create the new Product => api/v1/admin/products
 export const newProduct = catchAsyncErrors(async (req, res) => {
-    const product = await Product.create(req.body)
+    console.log("user body:", req.body.user);
+    req.body.user = req.user._id;
+    console.log("user _id:", req.user._id);
+    const product = await Product.create(req.body);
 
     res.status(200).json({
-        product
+        product,
     })
 });
 
