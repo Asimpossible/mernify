@@ -1,5 +1,6 @@
 import express from 'express';
-import { forgotPassword, loginUser, logoutUser, registerUser, resetPassword } from '../controllers/authController.js';
+import { allUsers, deleteUserAdmin, forgotPassword, getUserDetails, getUserProfile, loginUser, logoutUser, passwordUpdate, registerUser, resetPassword, updateUserAdmin, userUpdate } from '../controllers/authController.js';
+import { authorizeRoles, isAuthenticatedUser } from '../middlewares/auth.js'
 const router = express.Router();
 
 router.route("/register").post(registerUser);
@@ -7,5 +8,15 @@ router.route("/login").post(loginUser);
 router.route("/logout").get(logoutUser);
 router.route("/password/forgot").post(forgotPassword);
 router.route("/password/reset/:token").put(resetPassword);
+
+router.route("/me").get(isAuthenticatedUser, getUserProfile);
+router.route("/me/update").put(isAuthenticatedUser, userUpdate);
+router.route("/password/update").put(isAuthenticatedUser, passwordUpdate);
+
+router.route("/admin/users").get(isAuthenticatedUser, authorizeRoles('admin'), allUsers);
+
+router.route("/admin/users/:id").get(isAuthenticatedUser, authorizeRoles('admin'), getUserDetails);
+router.route("/admin/users/:id").put(isAuthenticatedUser, authorizeRoles('admin'), updateUserAdmin);
+router.route("/admin/users/:id").delete(isAuthenticatedUser, authorizeRoles('admin'), deleteUserAdmin);
 
 export default router;
