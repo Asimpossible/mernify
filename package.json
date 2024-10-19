@@ -21,6 +21,7 @@
     "mern-e-commerce": "file:",
     "mongoose": "^8.7.0",
     "nodemailer": "^6.9.15",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "react-star-ratings": "^2.3.0"
   }
 }
