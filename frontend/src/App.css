@@ -127,7 +127,7 @@ nav {
 }
 
 /* Footer */
-footer {
+.footer {
     margin-top: auto;
     color: grey;
     bottom: 0;
@@ -236,6 +236,12 @@ footer {
 .plus,
 .minus {
     padding: 0.1rem 0.5rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .stockCounter input::-webkit-outer-spin-button,

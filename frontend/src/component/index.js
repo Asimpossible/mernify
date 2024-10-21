@@ -1,2 +1,5 @@
 export { default as ProductItem } from './ProductItem/index.jsx'
 export { default as Loading } from './Loading/index.jsx'
+export { default as CustomPagination } from './CustomPagination/index.jsx'
+export { default as Search } from './Search/index.jsx'
+export { default as Filters } from './Filters/index.jsx'

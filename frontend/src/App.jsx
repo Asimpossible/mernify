@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { Footer, Header } from "./layout";
-import { Home } from './pages';
+import { Details, Home } from './pages';
 
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/product/:id' element={<Details />} />
         </Routes>
       </div>
       <Footer />
