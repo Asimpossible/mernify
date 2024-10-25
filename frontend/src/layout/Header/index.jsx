@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Search } from '../../component'
+import { useGetMeQuery } from '../../redux/api/User'
 
 const Index = () => {
+
+    const { data } = useGetMeQuery();
+    console.log(data)
     return (
         <div>
             <nav className="navbar row">

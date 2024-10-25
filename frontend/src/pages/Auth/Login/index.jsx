@@ -22,7 +22,6 @@ const Index = () => {
         }
 
         login(loginData);
-        console.log("Successful")
     };
 
 

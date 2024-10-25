@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetProductDetailsQuery } from '../../redux/api/Products'
 import { toast } from "react-hot-toast";
-import Loading from '../../component/Loading';
+const Loading = React.lazy(() => import('../../component/Loading'))
 import StarRatings from "react-star-ratings";
 
 const ProductDetails = () => {
     const params = useParams();
 
-    const { data, isLoading, error, isError } = useGetProductDetailsQuery(params?.id);
+    const { data, isLoading, error } = useGetProductDetailsQuery(params?.id);
     const product = data?.product;
 
     const [activeImg, setActiveImg] = useState("");
@@ -22,10 +22,10 @@ const ProductDetails = () => {
     }, [product]);
 
     useEffect(() => {
-        if (isError) {
+        if (error) {
             toast.error(error?.data?.message);
         }
-    }, [isError]);
+    }, [error]);
 
     if (isLoading) return <Loading />;
 

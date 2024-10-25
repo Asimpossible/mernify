@@ -1,9 +1,12 @@
-import React from 'react'
-import { MetaData } from '../../layout'
-import { useGetProductsQuery } from '../../redux/api/Products'
-import { Loading, ProductItem, CustomPagination, Filters } from '../../component';
-import { useSearchParams } from 'react-router-dom'
-import toast from 'react-hot-toast';
+import React, { useEffect } from "react";
+import MetaData from "../../layout/MetaData";
+import { useGetProductsQuery } from "../../redux/api/Products";
+import ProductItem from "../../component/ProductItem";
+import Loading from '../../component/Loading'
+import toast from "react-hot-toast";
+import CustomPagination from "../../component/CustomPagination";
+import { useSearchParams } from "react-router-dom";
+import Filters from "../../component/Filters";
 
 const Index = () => {
     let [searchParams] = useSearchParams();
@@ -16,18 +19,24 @@ const Index = () => {
 
     const params = { page, keyword };
 
-    min !== null && (params.min = min);
-    max !== null && (params.max = max);
-    category !== null && (params.category = category);
-    ratings !== null && (params.ratings = ratings);
+    if (min) params.min = min;
+    if (max) params.max = max;
+    if (category) params.category = category;
+    if (ratings) params.ratings = ratings;
 
-    const { data, isFetching, error, isError, isLoading } = useGetProductsQuery(params);
 
-    if (isFetching) console.log('Data Is Fetching')
-    if (isError) toast.error(error?.data?.message)
-    if (isLoading) return <div><Loading /></div>
+    const { data, isLoading, error } = useGetProductsQuery(params);
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error?.data?.message);
+        }
+    }, [error]);
 
     const columnSize = keyword ? 4 : 3;
+
+    if (isLoading) return <Loading />;
+
     return (
         <>
             <MetaData title={"Buy Best Products Online"} />
@@ -37,22 +46,29 @@ const Index = () => {
                         <Filters />
                     </div>
                 )}
-                <div className={keyword ? "col-6 col-md-9" : "col-12 col-sm-6 col-md-12"}>
+                <div className={keyword ? "col-6 col-md-9" : "col-6 col-md-12"}>
                     <h1 id="products_heading" className="text-secondary">
-                        {keyword ? `${data?.products?.length} Products found with keyword: ${keyword}` : "Latest Product"}
+                        {keyword
+                            ? `${data?.products?.length} Products found with keyword: ${keyword}`
+                            : "Latest Products"}
                     </h1>
 
                     <div id="products" className="mt-5">
                         <div className="row">
-                            {data?.products.map((product) =>
-                                <ProductItem key={product?._id} product={product} columnSize={columnSize} />)}
+                            {data?.products?.map((product, index) => (
+                                <ProductItem product={product} columnSize={columnSize} key={index} />
+                            ))}
                         </div>
                     </div>
-                    <CustomPagination resPerPage={data?.resPerPage} filteredProductsCount={data?.filteredProductsCount} />
+
+                    <CustomPagination
+                        resPerPage={data?.resPerPage}
+                        filteredProductsCount={data?.filteredProductsCount}
+                    />
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Index
+export default Index;            
