@@ -4,7 +4,6 @@ import { userApi } from "./api/User";
 import userReducer from './features/UserSlice'
 
 export const reducer = {
-
     auth: userReducer,
     [productApi.reducerPath]: productApi.reducer,
     [authApi.reducerPath]: authApi.reducer,

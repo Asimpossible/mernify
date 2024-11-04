@@ -1,13 +1,16 @@
 import React from 'react';
 import { useLoginMutation } from '../../../redux/api/Auth';
 import toast from 'react-hot-toast';
-
+import { Link, useNavigate } from 'react-router-dom'
+import { setIsAuthenticated } from '../../../redux/features/UserSlice';
 
 const Index = () => {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
     const [login, { data, isLoading, error }] = useLoginMutation();
+
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         if (error) toast.error(error?.data?.message)
@@ -65,7 +68,7 @@ const Index = () => {
                         </button>
 
                         <div className="my-3">
-                            <a href="/register" className="float-end">New User?</a>
+                            <Link to="/register" className="float-end">New User?</Link>
                         </div>
                     </form>
                 </div>

@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 
 const Index = () => {
     const [register, { data, isLoading, error }] = useRegisterMutation();
+
     const [user, setUser] = React.useState({
         name: "",
         email: "",
@@ -42,7 +43,7 @@ const Index = () => {
                         className="shadow rounded bg-body"
                         action="your_submit_url_here"
                         method="post"
-                        enctype="multipart/form-data"
+                        encType="multipart/form-data"
                         onSubmit={submitHandler}
                     >
                         <h2 className="mb-4">Register</h2>
@@ -72,7 +73,7 @@ const Index = () => {
                         </div>
 
                         <div className="mb-3">
-                            <label for="password_field" className="form-label">Password</label>
+                            <label htmlFor="password_field" className="form-label">Password</label>
                             <input
                                 type="password"
                                 id="password_field"

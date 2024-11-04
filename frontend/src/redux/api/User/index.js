@@ -12,14 +12,14 @@ export const userApi = createApi({
                     method: "GET"
                 }
             },
-            // transformResponse: (result) => result.user,
+            transformResponse: (result) => result.user,
             async onQueryStarted(args, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
                     dispatch(setUser(data));
-                    dispatch(setIsAuthenticated(true));
+                    dispatch(setIsAuthenticated(false));
                 } catch (error) {
-                    console.error(error)
+                    console.error("Fetching error:", error)
                 }
             }
         })

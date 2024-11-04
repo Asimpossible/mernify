@@ -29,7 +29,7 @@ const Index = () => {
 
     useEffect(() => {
         if (error) {
-            toast.error(error?.data?.message);
+            toast.error(error?.data?.message ? error?.data?.message : "Error occurred when fetching data");
         }
     }, [error]);
 
