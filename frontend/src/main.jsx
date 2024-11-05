@@ -8,7 +8,7 @@ import { store } from './redux/store.js'
 
 createRoot(document.getElementById('root')).render(
   <Router>
-    <Toaster position='top-right' />
+    <Toaster position='top-center' />
 
     <Provider store={store}>
       <App />
