@@ -1,6 +1,7 @@
 import React from 'react'
 import UserLayout from '../../component/User'
 import { useSelector } from 'react-redux'
+import { ProtectedRoute } from '../../component'
 
 const Index = () => {
     const { user } = useSelector((state) => state.auth)
