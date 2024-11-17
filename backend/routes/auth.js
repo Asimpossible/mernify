@@ -1,5 +1,5 @@
 import express from 'express';
-import { allUsers, deleteUserAdmin, forgotPassword, getUserDetails, getUserProfile, loginUser, logoutUser, passwordUpdate, registerUser, resetPassword, updateUserAdmin, userUpdate } from '../controllers/authController.js';
+import { allUsers, deleteUserAdmin, forgotPassword, getUserDetails, getUserProfile, loginUser, logoutUser, passwordUpdate, registerUser, resetPassword, updateUserAdmin, uploadAvatar, userUpdate } from '../controllers/authController.js';
 import { authorizeRoles, isAuthenticatedUser } from '../middlewares/auth.js'
 const router = express.Router();
 
@@ -12,6 +12,7 @@ router.route("/password/reset/:token").put(resetPassword);
 router.route("/me").get(isAuthenticatedUser, getUserProfile);
 router.route("/me/update").put(isAuthenticatedUser, userUpdate);
 router.route("/password/update").put(isAuthenticatedUser, passwordUpdate);
+router.route("/me/upload_avatar").put(isAuthenticatedUser, uploadAvatar);
 
 router.route("/admin/users").get(isAuthenticatedUser, authorizeRoles('admin'), allUsers);
 

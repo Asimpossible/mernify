@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 import { useLoginMutation } from '../../../redux/api/Auth';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
@@ -9,12 +10,19 @@ const Index = () => {
     const [password, setPassword] = React.useState('')
 
     const [login, { data, isLoading, error }] = useLoginMutation();
+    const { isAuthenticated } = useSelector((state) => state.auth);
+
 
     const navigate = useNavigate();
 
     React.useEffect(() => {
-        if (error) toast.error(error?.data?.message)
-    }, [error]);
+        if (isAuthenticated) {
+            navigate("/");
+        }
+        if (error) {
+            toast.error(error?.data?.message);
+        }
+    }, [error, isAuthenticated]);
 
     const submitHandler = (e) => {
         e.preventDefault();
