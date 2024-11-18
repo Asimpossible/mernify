@@ -4,7 +4,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 
 export const store = configureStore({
     reducer,
-    devTools: window.__REDUX_DEVTOOLS_EXTENSION__ && process.env.NODE_ENV === 'DEVELOPMENT',
+    devTools: true,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares)
 })
 
