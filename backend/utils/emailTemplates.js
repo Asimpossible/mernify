@@ -1,5 +1,4 @@
-export const getResetPasswordTemplate = (username, resetUrl) =>
-  `
+export const getResetPasswordTemplate = (username, resetUrl) => `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -505,7 +504,7 @@ export const getResetPasswordTemplate = (username, resetUrl) =>
                                 <tr>
                                   <td align="center">
                                     <a
-                                      href="{url}"
+                                      href="${resetUrl}"
                                       class="f-fallback button button--green"
                                       target="_blank"
                                       >Reset your password</a
@@ -571,4 +570,4 @@ export const getResetPasswordTemplate = (username, resetUrl) =>
     </table>
   </body>
 </html>
-`; 
+`;

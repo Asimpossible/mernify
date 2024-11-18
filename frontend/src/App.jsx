@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { Footer, Header } from "./layout";
-import { Details, Home, Login, Profile, Register, UpdatePassword, UpdateProfile, UploadAvatar } from './pages';
+import { Details, ForgotPassword, Home, Login, Profile, Register, ResetPassword, UpdatePassword, UpdateProfile, UploadAvatar } from './pages';
 import { ProtectedRoute } from './component';
 
 function App() {
@@ -15,6 +15,8 @@ function App() {
           <Route path='/product/:id' element={<Details />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/password/forgot' element={<ForgotPassword />} />
+          <Route path='/password/reset/:token' element={<ResetPassword />} />
 
           <Route path='/me/profile' element={
             <ProtectedRoute>

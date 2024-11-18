@@ -24,7 +24,7 @@ const Index = () => {
                 <div className="col-12 col-md-3 ps-5">
                     <div className="navbar-brand">
                         <Link to={"/"}>
-                            <img src="../images/shopit_logo.png" alt="ShopIT Logo" />
+                            <img src="/images/shopit_logo.png" alt="ShopIT Logo" />
                         </Link>
                     </div>
                 </div>
@@ -72,9 +72,6 @@ const Index = () => {
                             < Link to={"/login"} className="btn ms-4" id="login_btn"> Login </Link>
                         )
                     )}
-
-
-
                 </div>
             </nav >
         </div >

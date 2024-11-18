@@ -1,5 +1,4 @@
 import nodemailer from 'nodemailer';
-//! Subject is not defined error
 
 const sendEmail = async (options) => {
     const transport = nodemailer.createTransport({
