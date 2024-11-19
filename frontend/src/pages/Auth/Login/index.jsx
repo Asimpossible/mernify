@@ -4,6 +4,7 @@ import { useLoginMutation } from '../../../redux/api/Auth';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
 import { setIsAuthenticated } from '../../../redux/features/UserSlice';
+import MetaData from '../../../layout/MetaData'
 
 const Index = () => {
     const [email, setEmail] = React.useState('')
@@ -38,6 +39,7 @@ const Index = () => {
 
     return (
         <>
+            <MetaData title={'Login'} />
             <div className="row wrapper">
                 <div className="col-10 col-lg-5">
                     <form

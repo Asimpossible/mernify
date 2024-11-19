@@ -11,7 +11,8 @@ const Index = () => {
     const [logout] = useLazyLogoutQuery()
     const navigate = useNavigate()
 
-    const { user } = useSelector((state) => (state.auth))
+    const { user } = useSelector((state) => state.auth)
+    const { cartItems } = useSelector((state) => state.cart)
 
     const logoutHandler = () => {
         logout();
@@ -34,7 +35,7 @@ const Index = () => {
                 <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
                     <Link to={"/cart"} style={{ textDecoration: "none" }}>
                         <span id="cart" className="ms-3"> Cart </span>
-                        <span className="ms-1" id="cart_count">0</span>
+                        <span className="ms-1" id="cart_count">{cartItems?.length}</span>
                     </Link>
                     {user ? (
                         <div className="ms-4 dropdown">

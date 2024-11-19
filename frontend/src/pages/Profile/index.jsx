@@ -2,11 +2,13 @@ import React from 'react'
 import UserLayout from '../../component/User'
 import { useSelector } from 'react-redux'
 import { ProtectedRoute } from '../../component'
+import MetaData from '../../layout/MetaData'
 
 const Index = () => {
     const { user } = useSelector((state) => state.auth)
     return (
         <>
+            <MetaData title={"Your Profile"} />
             <UserLayout>
                 <div className="row justify-content-around mt-5 user-info">
                     <div className="col-12 col-md-3">

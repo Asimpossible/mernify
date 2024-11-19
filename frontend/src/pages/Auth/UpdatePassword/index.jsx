@@ -1,8 +1,9 @@
 import React from 'react'
-import { useUpdatePasswordMutation } from '../../redux/api/User';
+import { useUpdatePasswordMutation } from '../../../redux/api/User';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import UserLayout from '../../component/User'
+import UserLayout from '../../../component/User'
+import MetaData from '../../../layout/MetaData'
 
 const Index = () => {
     const [oldPassword, setOldPassword] = React.useState('')
@@ -36,6 +37,7 @@ const Index = () => {
     }
     return (
         <>
+            <MetaData title={"Update Password"} />
             <UserLayout>
                 <div className="row wrapper">
                     <div className="col-10 col-lg-8">

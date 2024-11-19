@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { useRegisterMutation } from '../../../redux/api/Auth';
 import toast from 'react-hot-toast';
+import MetaData from '../../../layout/MetaData'
 
 const Index = () => {
     const [register, { data, isLoading, error }] = useRegisterMutation();
@@ -37,6 +38,7 @@ const Index = () => {
 
     return (
         <>
+            <MetaData title={'Register'} />
             <div className="row wrapper">
                 <div className="col-10 col-lg-5">
                     <form
