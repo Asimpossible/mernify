@@ -210,6 +210,12 @@ footer {
 
 /* Cart */
 
+.cart_product {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 2px;
+    margin: 25px 0;
+}
+
 .cart-item {
     margin: 1.8rem 0rem;
     padding: 0rem 0.7rem;
