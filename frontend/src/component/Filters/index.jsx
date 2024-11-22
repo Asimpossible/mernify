@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { getPriceQueryParams } from '../../helpers/helpers';
+import { getPriceQueryParams } from '../../helpers/helpers.js';
 import { PRODUCT_CATEGORIES } from '../../constants';
 import StarRatings from 'react-star-ratings'
 

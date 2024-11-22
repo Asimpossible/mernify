@@ -286,6 +286,17 @@ footer {
     cursor: pointer;
 }
 
+.form-select {
+    cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
 /* Login & Register */
 
 .wrapper {
@@ -466,6 +477,11 @@ footer {
 
 .update-btn:hover {
     color: white;
+}
+
+/* Payment Method */
+.form-check-input {
+    cursor: pointer;
 }
 
 /* Pagination */

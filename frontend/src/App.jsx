@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { Footer, Header } from "./layout";
-import { Cart, Details, ForgotPassword, Home, Login, Profile, Register, ResetPassword, UpdatePassword, UpdateProfile, UploadAvatar } from './pages';
+import { Cart, ConfirmOrder, Details, ForgotPassword, Home, Login, PaymentMethod, Profile, Register, ResetPassword, Shipping, UpdatePassword, UpdateProfile, UploadAvatar } from './pages';
 import { ProtectedRoute } from './component';
 
 function App() {
@@ -43,6 +43,13 @@ function App() {
           } />
 
           <Route path='/cart' element={<Cart />} />
+          <Route path='/shipping' element={<ProtectedRoute><Shipping /></ProtectedRoute>} />
+          <Route path='/confirm_order' element={<ProtectedRoute><ConfirmOrder /></ProtectedRoute>} />
+          <Route path='/payment_method' element={
+            <ProtectedRoute>
+              <PaymentMethod />
+            </ProtectedRoute>
+          } />
         </Routes>
       </div>
       <Footer />

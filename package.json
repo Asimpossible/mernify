@@ -24,6 +24,7 @@
     "nodemailer": "^6.9.15",
     "nodemon": "^3.1.7",
     "react-js-pagination": "^3.0.3",
-    "react-star-ratings": "^2.3.0"
+    "react-star-ratings": "^2.3.0",
+    "stripe": "^17.4.0"
   }
 }

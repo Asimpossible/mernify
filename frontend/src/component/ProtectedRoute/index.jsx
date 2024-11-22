@@ -1,17 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
-import { Loading } from '..'
+import React from "react";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import Loader from "../../component/Loading";
 
-const Index = ({ children }) => {
+const ProtectedRoute = ({ children }) => {
+    const { isAuthenticated, loading } = useSelector((state) => state.auth);
 
-    const { isAuthenticated, loading } = useSelector((state) => state.auth)
-    if (loading) <Loading />
+    if (loading) return <Loader />;
 
     if (!isAuthenticated) {
-        return <Navigate to='/login' replace />
+        return <Navigate to="/login" replace />;
     }
-    return children;
-}
 
-export default Index
+    return children;
+};
+
+export default ProtectedRoute;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from "react-redux"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { setCartItem, removeCartItem } from "../../redux/features/CartSlice";
 import MetaData from '../../layout/MetaData'
@@ -9,7 +9,7 @@ import MetaData from '../../layout/MetaData'
 const Index = () => {
     const { cartItems } = useSelector((state) => state.cart)
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     const increaseQty = (item, quantity) => {
         const newQty = quantity + 1;
 
@@ -41,6 +41,10 @@ const Index = () => {
 
     const removeProduct = (id) => {
         dispatch(removeCartItem(id))
+    }
+
+    const checkOutHandler = () => {
+        navigate("/shipping")
     }
 
     return (
@@ -110,7 +114,7 @@ const Index = () => {
                                     (Units)</span></p>
                                 <p>Est. total: <span className="order-summary-values">$ {cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2)}</span></p>
                                 <hr />
-                                <button id="checkout_btn" className="btn btn-primary w-100">
+                                <button id="checkout_btn" className="btn btn-primary w-100" onClick={() => checkOutHandler()}>
                                     Check out
                                 </button>
                             </div>
