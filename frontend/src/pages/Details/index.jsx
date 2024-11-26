@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"
 import { useGetProductDetailsQuery } from '../../redux/api/Products'
 import { toast } from "react-hot-toast";
-import { useDispatch } from "react-redux"
 const Loading = React.lazy(() => import('../../component/Loading'))
 import StarRatings from "react-star-ratings";
 import { setCartItem } from "../../redux/features/CartSlice";
 import MetaData from '../../layout/MetaData'
+import { NewReview, ListReviews } from "../reviews";
 
 
-const ProductDetails = () => {
+
+const Index = () => {
     const params = useParams();
     const dispatch = useDispatch()
     const { data, isLoading, error } = useGetProductDetailsQuery(params?.id);
@@ -17,6 +19,8 @@ const ProductDetails = () => {
 
     const [quantity, setQuantity] = useState(1)
     const [activeImg, setActiveImg] = useState("");
+
+    const { isAuthenticated } = useSelector((state) => state.auth)
 
     useEffect(() => {
         setActiveImg(
@@ -82,8 +86,8 @@ const ProductDetails = () => {
                         />
                     </div>
                     <div className="row justify-content-start mt-5">
-                        {product?.images?.map((img) => (
-                            <div className="col-2 ms-4 mt-2">
+                        {product?.images?.map((img, index) => (
+                            <div className="col-2 ms-4 mt-2" key={index}>
                                 <a role="button">
                                     <img
                                         className={`d-block border rounded p-3 cursor-pointer ${img.url === activeImg ? "border-warning" : ""
@@ -129,7 +133,7 @@ const ProductDetails = () => {
                             type="number"
                             className="form-control count d-inline"
                             value={quantity}
-                            readonly="readonly"
+                            readOnly="readOnly"
                         />
                         <span className="btn btn-primary plus" onClick={(() => increaseQty())}>+</span>
                     </div>
@@ -163,14 +167,16 @@ const ProductDetails = () => {
                     <p id="product_seller mb-3">
                         Sold by: <strong>{product?.seller}</strong>
                     </p>
-
-                    <div className="alert alert-danger my-5" type="alert">
-                        Login to post your review.
-                    </div>
+                    {isAuthenticated ? (<NewReview productId={product?._id} />) :
+                        <div className="alert alert-danger my-5" type="alert">
+                            Login to post your review.
+                        </div>
+                    }
                 </div>
             </div>
+            {product?.reviews?.length > 0 && <ListReviews reviews={product?.reviews} />}
         </>
     );
 };
 
-export default ProductDetails;
+export default Index;

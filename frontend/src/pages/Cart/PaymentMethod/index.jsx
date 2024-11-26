@@ -3,11 +3,11 @@ import MetaData from "../../../layout/MetaData";
 import { useSelector } from "react-redux";
 import CheckoutSteps from "../CheckoutSteps";
 import { calculateOrderCost } from "../../../helpers/helpers.js";
-import { useCreateNewOrderMutation, useStripeCheckoutSessionMutation } from "../../../redux/api/Order/index.js";
+import { useCreateNewOrderMutation, useStripeCheckoutSessionMutation } from "../../../redux/api/Order";
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
 
-const PaymentMethod = () => {
+const Index = () => {
     const navigate = useNavigate();
     const [method, setMethod] = React.useState("");
     const { shippingInfo, cartItems } = useSelector((state) => state.cart)
@@ -26,7 +26,7 @@ const PaymentMethod = () => {
         }
 
         if (isSuccess) {
-            navigate("/")
+            navigate("/me/orders?order_success=true");
         }
     }, [error, isSuccess])
 
@@ -45,7 +45,7 @@ const PaymentMethod = () => {
                 taxAmount: taxPrice,
                 totalAmount: totalPrice,
                 paymentInfo: {
-                    status: "Not Paid"
+                    status: "NOT PAID"
                 },
                 paymentMethod: "COD"
             };
@@ -113,4 +113,4 @@ const PaymentMethod = () => {
     );
 }
 
-export default PaymentMethod;
+export default Index;

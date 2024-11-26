@@ -32,7 +32,7 @@ export const stripeCheckoutSession = catchAsyncErrors(async (req, res, next) => 
 
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
-        success_url: `${process.env.FRONTEND_URL}/me/orders`,
+        success_url: `${process.env.FRONTEND_URL}/me/orders?order_success=true`,
         cancel_url: `${process.env.FRONTEND_URL}`,
         customer_email: req?.user?.email,
         client_reference_id: req?.user?._id?.toString(),
@@ -75,11 +75,6 @@ const getOrderItems = async (line_items) => {
 export const stripeWebhook = catchAsyncErrors(async (req, res, next) => {
     try {
         const signature = req.headers["stripe-signature"];
-
-
-        // Log the raw body for debugging
-        console.log("Raw body (Buffer):", req.body);
-        console.log("Raw body (String):", req.body.toString());
 
         const event = stripe.webhooks.constructEvent(req.body, signature, process.env.STRIPE_WEBHOOK_SECRET);
 
