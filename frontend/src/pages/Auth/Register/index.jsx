@@ -5,7 +5,7 @@ import { useRegisterMutation } from '../../../redux/api/Auth';
 import toast from 'react-hot-toast';
 import MetaData from '../../../layout/MetaData'
 
-const Index = () => {
+const Register = () => {
     const [register, { data, isLoading, error }] = useRegisterMutation();
 
     const [user, setUser] = React.useState({
@@ -96,4 +96,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Register

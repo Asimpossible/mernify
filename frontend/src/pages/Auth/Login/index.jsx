@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { setIsAuthenticated } from '../../../redux/features/UserSlice';
 import MetaData from '../../../layout/MetaData'
 
-const Index = () => {
+const Login = () => {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
@@ -87,4 +87,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Login

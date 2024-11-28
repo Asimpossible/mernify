@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveShippingInfo } from '../../../redux/features/CartSlice'
 import { useNavigate } from 'react-router-dom'
 import MetaData from '../../../layout/MetaData'
-import { CheckoutSteps } from '../..'
+import CheckoutSteps from '../CheckoutSteps'
 
-const Index = () => {
+const Shipping = () => {
     const countriesList = Object.values(countries)
 
     const [address, setAdress] = React.useState("")
@@ -128,4 +128,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Shipping

@@ -3,7 +3,7 @@ import '../../App.css'
 import { Link } from 'react-router-dom'
 import StarRatings from 'react-star-ratings'
 
-const Index = ({ product, columnSize }) => {
+const ProductItem = ({ product, columnSize }) => {
     return (
         <>
             <div className={`col-sm-12 col-md-6 col-lg-${columnSize} my-3`}>
@@ -43,4 +43,4 @@ const Index = ({ product, columnSize }) => {
     )
 }
 
-export default Index
+export default ProductItem

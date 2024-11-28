@@ -2,7 +2,7 @@ import React from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import Pagination from 'react-js-pagination';
 
-const Index = ({ resPerPage, filteredProductsCount }) => {
+const CustomPagination = ({ resPerPage, filteredProductsCount }) => {
     const [currentPage, setCurrentPage] = React.useState();
 
     let [searchParams] = useSearchParams();
@@ -51,4 +51,4 @@ const Index = ({ resPerPage, filteredProductsCount }) => {
     )
 }
 
-export default Index
+export default CustomPagination

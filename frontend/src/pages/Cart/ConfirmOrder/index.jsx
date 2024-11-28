@@ -3,9 +3,9 @@ import MetaData from '../../../layout/MetaData'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { calculateOrderCost } from '../../../helpers/helpers.js'
-import { CheckoutSteps } from '../..'
+import { CheckoutSteps } from '../CheckoutSteps'
 
-const Index = () => {
+const ConfirmOrder = () => {
 
     const { cartItems, shippingInfo } = useSelector((state) => state.cart)
     const { user } = useSelector((state) => state.auth)
@@ -87,4 +87,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default ConfirmOrder

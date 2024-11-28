@@ -3,15 +3,15 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 import { useGetProductDetailsQuery } from '../../redux/api/Products'
 import { toast } from "react-hot-toast";
-const Loading = React.lazy(() => import('../../component/Loading'))
+const Loading = React.lazy(() => import('../../components/Loading'))
 import StarRatings from "react-star-ratings";
 import { setCartItem } from "../../redux/features/CartSlice";
 import MetaData from '../../layout/MetaData'
-import { NewReview, ListReviews } from "../reviews";
+import { NewReview, ListReviews } from "../Reviews";
 
 
 
-const Index = () => {
+const Details = () => {
     const params = useParams();
     const dispatch = useDispatch()
     const { data, isLoading, error } = useGetProductDetailsQuery(params?.id);
@@ -179,4 +179,4 @@ const Index = () => {
     );
 };
 
-export default Index;
+export default Details;

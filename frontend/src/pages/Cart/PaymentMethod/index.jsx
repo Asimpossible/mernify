@@ -7,7 +7,7 @@ import { useCreateNewOrderMutation, useStripeCheckoutSessionMutation } from "../
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
 
-const Index = () => {
+const PaymentMethod = () => {
     const navigate = useNavigate();
     const [method, setMethod] = React.useState("");
     const { shippingInfo, cartItems } = useSelector((state) => state.cart)
@@ -113,4 +113,4 @@ const Index = () => {
     );
 }
 
-export default Index;
+export default PaymentMethod;

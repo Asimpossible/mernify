@@ -2,11 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUpdateProfileMutation } from '../../redux/api/User';
 import toast from 'react-hot-toast';
-import UserLayout from '../../component/User'
+import UserLayout from '../../components/User'
 import { useSelector } from 'react-redux'
 import MetaData from '../../layout/MetaData'
 
-const Index = () => {
+const UpdateProfile = () => {
     const [name, setName] = React.useState("")
     const [email, setEmail] = React.useState("")
 
@@ -92,4 +92,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default UpdateProfile

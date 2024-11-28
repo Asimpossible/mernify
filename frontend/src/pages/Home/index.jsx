@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import MetaData from "../../layout/MetaData";
 import { useGetProductsQuery } from "../../redux/api/Products";
-import ProductItem from "../../component/ProductItem";
-import Loading from '../../component/Loading'
+import ProductItem from "../../components/ProductItem";
+import Loading from '../../components/Loading'
 import toast from "react-hot-toast";
-import CustomPagination from "../../component/CustomPagination";
+import CustomPagination from "../../components/CustomPagination";
 import { useSearchParams } from "react-router-dom";
-import Filters from "../../component/Filters";
+import Filters from "../../components/Filters";
 
-const Index = () => {
+const Home = () => {
     let [searchParams] = useSearchParams();
     const page = searchParams.get("page") || 1;
     const keyword = searchParams.get("keyword") || "";
@@ -71,4 +71,4 @@ const Index = () => {
     );
 };
 
-export default Index;            
+export default Home;            

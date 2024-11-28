@@ -1,7 +1,7 @@
 import React from 'react'
 import StarRatings from "react-star-ratings";
 
-const Index = ({ reviews }) => {
+const ListReviews = ({ reviews }) => {
     console.log(reviews)
     return (
         <>
@@ -41,4 +41,4 @@ const Index = ({ reviews }) => {
     )
 }
 
-export default Index
+export default ListReviews

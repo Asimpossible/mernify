@@ -1,6 +1,6 @@
 import React from "react";
 import { useMyOrdersQuery } from "../../../redux/api/Order";
-import Loading from "../../../component/Loading";
+import Loading from "../../../components/Loading";
 import { toast } from "react-hot-toast";
 import { MDBDataTable } from "mdbreact";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";

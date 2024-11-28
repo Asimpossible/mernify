@@ -2,10 +2,10 @@ import React from 'react'
 import { useUpdatePasswordMutation } from '../../../redux/api/User';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import UserLayout from '../../../component/User'
+import UserLayout from '../../../components/User'
 import MetaData from '../../../layout/MetaData'
 
-const Index = () => {
+const UpdatePassword = () => {
     const [oldPassword, setOldPassword] = React.useState('')
     const [password, setPassword] = React.useState('')
 
@@ -80,4 +80,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default UpdatePassword

@@ -1,10 +1,10 @@
 import React from 'react'
-import UserLayout from '../../component/User'
+import UserLayout from '../../components/User'
 import { useSelector } from 'react-redux'
-import { ProtectedRoute } from '../../component'
+import { ProtectedRoute } from '../../components'
 import MetaData from '../../layout/MetaData'
 
-const Index = () => {
+const Profile = () => {
     const { user } = useSelector((state) => state.auth)
     return (
         <>
@@ -37,4 +37,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Profile

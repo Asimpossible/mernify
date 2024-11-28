@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CheckoutSteps = ({ shipping, confirmOrder, payment }) => {
+export const CheckoutSteps = ({ shipping, confirmOrder, payment }) => {
     return (
         <div className="checkout-progress d-flex justify-content-center mt-5">
             {shipping ? (

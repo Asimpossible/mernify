@@ -1,29 +1,8 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-const Index = () => {
-    const menuItems = [
-        {
-            name: "Profile",
-            url: '/me/profile',
-            icon: 'fas fa-user'
-        },
-        {
-            name: "Update Profile",
-            url: '/me/update_profile',
-            icon: 'fas fa-user'
-        },
-        {
-            name: "Upload Avatar",
-            url: '/me/upload_avatar',
-            icon: 'fas fa-user-circle'
-        },
-        {
-            name: "Update Password",
-            url: '/me/update_password',
-            icon: 'fas fa-lock'
-        },
-    ];
+const SideMenu = ({ menuItems }) => {
+
 
     const location = useLocation();
 
@@ -53,4 +32,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default SideMenu

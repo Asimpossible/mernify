@@ -1,7 +1,7 @@
 import React from 'react';
 import './Loading.css'
 
-const Index = () => {
+const Loading = () => {
     return (
         <>
             <div className="socket">
@@ -198,4 +198,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Loading

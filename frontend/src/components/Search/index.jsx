@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Index = () => {
+const Search = () => {
     const [keyword, setKeyword] = React.useState("");
     const navigate = useNavigate();
 
@@ -39,4 +39,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Search

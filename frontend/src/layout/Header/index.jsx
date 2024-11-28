@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Search } from '../../component'
+import { Search } from '../../components'
 import { useGetMeQuery } from '../../redux/api/User'
 import { useSelector } from 'react-redux'
 import { useLazyLogoutQuery } from '../../redux/api/Auth'
@@ -56,8 +56,10 @@ const Index = () => {
                                 <span>{user?.name}</span>
                             </button>
                             <div className="dropdown-menu w-100" aria-labelledby="dropDownMenuButton">
-                                <Link className="dropdown-item" to="/admin/dashboard">{""}
-                                    Dashboard{""} </Link>
+                                {user?.role === "admin" && (
+                                    <Link className="dropdown-item" to="/admin/dashboard">{""}
+                                        Dashboard{""} </Link>
+                                )}
 
                                 <Link className="dropdown-item" to="/me/orders"> {""}
                                     Orders{""} </Link>

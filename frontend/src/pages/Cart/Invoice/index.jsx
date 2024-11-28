@@ -1,14 +1,14 @@
 import React from 'react';
 import './invoice.css';
 import MetaData from '../../../layout/MetaData';
-import Loading from '../../../component/Loading';
+import Loading from '../../../components/Loading';
 import { useOrderDetailsQuery } from '../../../redux/api/Order';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 
-const Index = () => {
+const Invoice = () => {
 
     const params = useParams()
     const { data, isLoading, error } = useOrderDetailsQuery(params.id)
@@ -152,4 +152,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Invoice

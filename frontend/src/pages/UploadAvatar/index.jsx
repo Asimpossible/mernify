@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserLayout from "../../component/User";
+import UserLayout from "../../components/User";
 import { useNavigate } from "react-router-dom";
 import { useUploadAvatarMutation } from "../../redux/api/User";
 import toast from "react-hot-toast";

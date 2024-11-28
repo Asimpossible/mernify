@@ -2,10 +2,10 @@ import React from 'react'
 import MetaData from '../../../layout/MetaData'
 import { Link, useParams } from 'react-router-dom'
 import { useOrderDetailsQuery } from '../../../redux/api/Order'
-import Loading from '../../../component/Loading'
+import Loading from '../../../components/Loading'
 import toast from 'react-hot-toast'
 
-const Index = () => {
+const OrderDetails = () => {
     const params = useParams()
     const { data, isLoading, error } = useOrderDetailsQuery(params?.id)
     const order = data?.order || {}
@@ -133,4 +133,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default OrderDetails
