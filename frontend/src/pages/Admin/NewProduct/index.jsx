@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Loading from "../../../components/Loading";
 import { toast } from "react-hot-toast";
 import MetaData from "../../../layout/MetaData";
+import Loading from "../../../components/Loading";
 import AdminLayout from "../../../components/Admin";
 import { useCreateProductMutation } from '../../../redux/api/Products';
 import { PRODUCT_CATEGORIES } from '../../../constants';
@@ -64,7 +64,7 @@ const NewProduct = () => {
                             </div>
 
                             <div className="mb-3">
-                                <label for="description_field" className="form-label">
+                                <label htmlFor="description_field" className="form-label">
                                     Description
                                 </label>
                                 <textarea
