@@ -8,6 +8,7 @@ import StarRatings from "react-star-ratings";
 import { setCartItem } from "../../redux/features/CartSlice";
 import MetaData from '../../layout/MetaData'
 import { NewReview, ListReviews } from "../Reviews";
+import NotFound from "../NotFound";
 
 
 
@@ -70,6 +71,9 @@ const Details = () => {
 
     }
     if (isLoading) return <Loading />;
+    if (error && error?.status === 404) {
+        return <NotFound />
+    }
 
     return (
         <>

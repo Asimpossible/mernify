@@ -7,3 +7,4 @@ export { default as User } from './User';
 export { default as SideMenu } from './SideMenu';
 export { default as ProtectedRoute } from './ProtectedRoute';
 export { default as SalesChart } from './Charts/SalesChart';
+export { default as AdminLayout } from './Admin';

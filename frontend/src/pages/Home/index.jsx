@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import MetaData from "../../layout/MetaData";
 import { useGetProductsQuery } from "../../redux/api/Products";
-import ProductItem from "../../components/ProductItem";
-import Loading from '../../components/Loading'
+import { ProductItem, Loading, CustomPagination, Filters } from "../../components";
 import toast from "react-hot-toast";
-import CustomPagination from "../../components/CustomPagination";
 import { useSearchParams } from "react-router-dom";
-import Filters from "../../components/Filters";
 
 const Home = () => {
     let [searchParams] = useSearchParams();

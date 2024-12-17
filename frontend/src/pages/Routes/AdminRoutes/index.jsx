@@ -2,11 +2,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ProtectedRoute } from '../../../components';
-import { Dashboard } from '../../Admin/Dashboard';
-import ListProducts from '../../Admin/ListProducts';
-import NewProduct from '../../Admin/NewProduct';
-import UpdateProduct from '../../Admin/UpdateProduct';
-import UploadImages from '../../Admin/UploadImages';
+import { Dashboard, ListOrders, ListProducts, NewProduct, ProcessOrder, UpdateProduct, UploadImages, ListUsers, UpdateUser, ProductReviews } from '../..';
+
 
 const AdminRoutes = () => {
     const { user } = useSelector((state) => state.auth)
@@ -42,6 +39,37 @@ const AdminRoutes = () => {
                     <UploadImages />
                 </ProtectedRoute>
             } />
+
+            <Route path='/admin/orders' element={
+                <ProtectedRoute admin={true}>
+                    <ListOrders />
+                </ProtectedRoute>
+            } />
+
+            <Route path='/admin/orders/:id' element={
+                <ProtectedRoute admin={true}>
+                    <ProcessOrder />
+                </ProtectedRoute>
+            } />
+
+            <Route path='/admin/users' element={
+                <ProtectedRoute admin={true}>
+                    <ListUsers />
+                </ProtectedRoute>
+            } />
+
+            <Route path='/admin/users/:id' element={
+                <ProtectedRoute admin={true}>
+                    <UpdateUser />
+                </ProtectedRoute>
+            } />
+
+            <Route path='/admin/reviews' element={
+                <ProtectedRoute admin={true}>
+                    <ProductReviews />
+                </ProtectedRoute>
+            } />
+
         </>
     )
 }

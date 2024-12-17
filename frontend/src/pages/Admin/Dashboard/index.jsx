@@ -4,10 +4,9 @@ import AdminLayout from "../../../components/Admin";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import SalesChart from '../../../components/Charts/SalesChart'
+import { Loading, SalesChart } from '../../../components'
 import { useLazyGetDashboardSalesQuery } from "../../../redux/api/Order";
 import { toast } from "react-hot-toast";
-import Loading from "../../../components/Loading";
 import MetaData from "../../../layout/MetaData";
 
 export const Dashboard = () => {

@@ -41,7 +41,7 @@ const OrderDetails = () => {
                             <tr>
                                 <th scope="row">Status</th>
                                 <td className={String(orderStatus).includes("Delivered") ? "greenColor" : "redColor"}>
-                                    <b>{order?.orderStatus}</b>
+                                    <b>{orderStatus}</b>
                                 </td>
                             </tr>
                             <tr>

@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-hot-toast";
 import MetaData from "../../../layout/MetaData";
-import Loading from "../../../components/Loading";
-import AdminLayout from "../../../components/Admin";
+import { Loading, AdminLayout } from "../../../components";
 import { useCreateProductMutation } from '../../../redux/api/Products';
 import { PRODUCT_CATEGORIES } from '../../../constants';
 

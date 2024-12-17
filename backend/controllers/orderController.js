@@ -72,24 +72,36 @@ export const allOrders = catchAsyncErrors(async (req, res, next) => {
 
 //Update order status - ADMIN => api/v1/admin/orders/:id
 export const updateOrder = catchAsyncErrors(async (req, res, next) => {
-
     const order = await Order.findById(req.params.id);
 
-    if (!order) return next(new ErrorHandler("Order not found with this ID", 404));
+    if (!order) {
+        return next(new ErrorHandler("No Order found with this ID", 404));
+    }
 
-    if (order?.orderStatus === "Delivered") return next(new ErrorHandler("You have already delivered this order", 400));
+    if (order?.orderStatus === "Delivered") {
+        return next(new ErrorHandler("You have already delivered this order", 400));
+    }
 
-    //Update products stock
-    order?.orderItems.forEach(async (item) => {
-        const product = await Product.findById(item?.productID?.toString());
+    let productNotFound = false;
 
-        if (!product) return next(new ErrorHandler("Product not found with this ID", 404));
-
+    // Update products stock
+    for (const item of order.orderItems) {
+        const product = await Product.findById(item?.product?.toString());
+        if (!product) {
+            productNotFound = true;
+            break;
+        }
         product.stock = product.stock - item.quantity;
         await product.save({ validateBeforeSave: false });
-    });
+    }
 
-    order.orderStatus = req.body.orderStatus;
+    if (productNotFound) {
+        return next(
+            new ErrorHandler("No Product found with one or more IDs.", 404)
+        );
+    }
+
+    order.orderStatus = req.body.status;
     order.deliveredAt = Date.now();
 
     await order.save();
@@ -104,16 +116,16 @@ export const updateOrder = catchAsyncErrors(async (req, res, next) => {
 export const deleteOrder = catchAsyncErrors(async (req, res, next) => {
     const order = await Order.findById(req.params.id);
 
-    if (!order) return next(new ErrorHandler("Order not found with this ID", 404));
+    if (!order) {
+        return next(new ErrorHandler("No Order found with this ID", 404));
+    }
 
     await order.deleteOne();
 
     res.status(200).json({
         success: true,
-        message: "Order deleted",
     });
 });
-
 
 async function getSalesData(startDate, endDate) {
     const salesData = await Order.aggregate([

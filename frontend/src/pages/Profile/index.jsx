@@ -1,7 +1,6 @@
 import React from 'react'
-import UserLayout from '../../components/User'
 import { useSelector } from 'react-redux'
-import { ProtectedRoute } from '../../components'
+import { ProtectedRoute, User as UserLayout } from '../../components'
 import MetaData from '../../layout/MetaData'
 
 const Profile = () => {

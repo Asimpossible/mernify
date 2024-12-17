@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const orderApi = createApi({
     reducerPath: 'orderApi',
     baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/' }),
+    tagTypes: ["Order", "AdminOrders"],
     endpoints: (builder) => ({
         createNewOrder: builder.mutation({
             query(body) {
@@ -27,7 +28,8 @@ export const orderApi = createApi({
                     url: `orders/${id}`,
                     method: "GET"
                 }
-            }
+            },
+            providesTags: ["Order"]
         }),
         stripeCheckoutSession: builder.mutation({
             query(body) {
@@ -46,7 +48,36 @@ export const orderApi = createApi({
                 }
             }
         }),
+        getAdminOrders: builder.query({
+            query() {
+                return {
+                    url: "admin/orders",
+                    method: "GET",
+                }
+            },
+            providesTags: ["AdminOrders"],
+        }),
+        updateOrder: builder.mutation({
+            query({ body, id }) {
+                return {
+                    url: `/admin/orders/${id}`,
+                    method: "PUT",
+                    body
+                }
+            },
+            invalidatesTags: ["Order"],
+        }),
+        deleteOrder: builder.mutation({
+            query(id) {
+                return {
+                    url: `/admin/orders/${id}`,
+                    method: "DELETE",
+                }
+            },
+            invalidatesTags: ["AdminOrders"],
+        })
     })
 })
 
-export const { useCreateNewOrderMutation, useStripeCheckoutSessionMutation, useMyOrdersQuery, useOrderDetailsQuery, useLazyGetDashboardSalesQuery } = orderApi
+export const { useCreateNewOrderMutation, useStripeCheckoutSessionMutation, useMyOrdersQuery,
+    useOrderDetailsQuery, useLazyGetDashboardSalesQuery, useGetAdminOrdersQuery, useUpdateOrderMutation, useDeleteOrderMutation } = orderApi
