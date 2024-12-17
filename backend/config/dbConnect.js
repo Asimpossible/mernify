@@ -9,5 +9,5 @@ export const connectDatabase = () => {
 
     mongoose.connect(DB_URL).then((con) => {
         console.log(`MongoDB Database connected with HOST: ${con?.connection?.host} `)
-    })
+    }).catch((err) => console.error('Database connection error:', err))
 }
