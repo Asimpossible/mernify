@@ -2,7 +2,7 @@ import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import Product from "../models/product.js";
 import Order from "../models/order.js";
 import APIFilters from "../utils/apiFilters.js";
-import ErrorHandler from "../utils/errorHandler.js";
+import ErrorHandler from "../utils/ErrorHandler.js";
 import { delete_file, upload_file } from "../utils/cloudinary.js";
 
 // Get All Products   =>  /api/v1/products
