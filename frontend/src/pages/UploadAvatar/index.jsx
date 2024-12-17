@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import UserLayout from "../../components/User";
+import MetaData from '../../layout/MetaData'
 import { useNavigate } from "react-router-dom";
 import { useUploadAvatarMutation } from "../../redux/api/User";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import MetaData from '../../layout/MetaData'
 
 const UploadAvatar = () => {
     const { user } = useSelector((state) => state.auth);
@@ -19,7 +19,7 @@ const UploadAvatar = () => {
     const [uploadAvatar, { isLoading, error, isSuccess }] =
         useUploadAvatarMutation();
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (error) {
             toast.error(error?.data?.message);
         }
